@@ -94,31 +94,29 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Hero Background Parallax & Floating ---
     const heroBg = document.querySelector('#hero-bg-img');
 
-    if (heroBg) {
-        // Parallax (scroll-based)
-        gsap.to(heroBg, {
-            scrollTrigger: {
-                trigger: 'body',
-                start: 'top top',
-                end: 'bottom top',
-                scrub: 1
-            },
-            y: 200,
-            ease: 'none'
-        });
+    // Parallax
+    gsap.to(heroBg, {
+        scrollTrigger: {
+            trigger: 'body',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1
+        },
+        y: 200,
+        scale: 1.2,
+        ease: 'none'
+    });
 
-        // Floating Animation (independent, continuous)
-        gsap.to(heroBg, {
-            y: '+=50',
-            rotation: '+=10',
-            scale: '+=0.1',
-            duration: 3,
-            repeat: -1,
-            yoyo: true,
-            ease: 'sine.inOut',
-            transformOrigin: 'center center'
-        });
-    }
+    // Floating Animation (Yoyo)
+    gsap.to(heroBg, {
+        y: '-=50',
+        rotation: 10,
+        scale: 1.1,
+        duration: 3,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut'
+    });
 
     // --- Floating Elements Animation ---
     gsap.utils.toArray('.floating-element').forEach((element) => {
@@ -228,25 +226,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Smooth Scroll to Anchors & Buttons ---
-    const scrollElements = document.querySelectorAll('a[href^="#"], [data-scroll-to]');
-    console.log('Found scroll elements:', scrollElements.length);
-
-    scrollElements.forEach(el => {
+    document.querySelectorAll('a[href^="#"], [data-scroll-to]').forEach(el => {
         el.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.getAttribute('href') || this.getAttribute('data-scroll-to');
-            console.log('Clicked element, target:', targetId);
-
             if (!targetId || targetId === '#') return;
 
             const targetElement = document.querySelector(targetId);
-            console.log('Target element found:', targetElement);
-
             if (targetElement) {
-                lenis.scrollTo(targetElement, {
-                    offset: -100,
-                    duration: 1.5
-                });
+                lenis.scrollTo(targetElement);
             }
         });
     });
