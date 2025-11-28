@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Look-Eat | L'Expérience Culinaire Augmentée</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Outfit:wght@300;500;700;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#ff6a00',
+            dark: '#0a0a0a',
+            surface: '#121212',
+            'surface-light': '#1e1e1e',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Outfit', 'sans-serif'],
+          },
+          backgroundImage: {
+            'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.29/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+
+<body class="bg-dark text-white overflow-x-hidden antialiased selection:bg-primary selection:text-white">
+
+  <!-- Loader -->
+  <div id="loader" class="fixed inset-0 z-[100] bg-black flex items-center justify-center">
+    <div class="overflow-hidden">
+      <h1
+        class="text-6xl md:text-9xl font-display font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500 translate-y-full"
+        id="loader-text">
+        LOOK-EAT
+      </h1>
+    </div>
+  </div>
+  <script>
+    // Immediate fallback: if JS fails or takes too long, remove loader
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const loader = document.getElementById('loader');
+        if (loader) {
+          loader.style.transition = 'opacity 0.5s ease';
+          loader.style.opacity = '0';
+          setTimeout(() => loader.style.display = 'none', 500);
+        }
+      }, 3000); // 3s backup
+    });
+  </script>
+
+  <!-- Navigation -->
+  <nav
+    class="fixed top-0 w-full z-50 px-6 py-6 text-white bg-gradient-to-b from-black/50 to-transparent backdrop-blur-sm">
+    <div class="container mx-auto flex justify-between items-center">
+      <a href="#"
+        class="text-2xl font-display font-bold tracking-tighter hover:text-primary transition-colors duration-300">Look-Eat.</a>
+
+      <div class="hidden md:flex gap-8 items-center">
+        <a href="#features"
+          class="nav-link text-sm uppercase tracking-widest hover:text-primary transition-colors">Concept</a>
+        <a href="#demo"
+          class="nav-link text-sm uppercase tracking-widest hover:text-primary transition-colors">Expérience</a>
+        <a href="#testimonials"
+          class="nav-link text-sm uppercase tracking-widest hover:text-primary transition-colors">Témoignages</a>
+        <a href="#pricing"
+          class="nav-link text-sm uppercase tracking-widest hover:text-primary transition-colors">Offres</a>
+      </div>
+
+      <button data-magnetic data-scroll-to="#contact"
+        class="hidden md:flex items-center gap-2 px-6 py-2 border border-white/20 rounded-full hover:bg-white hover:text-black transition-all duration-300 group">
+        <span class="text-sm font-medium">Réserver une démo</span>
+        <span
+          class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
+      </button>
+
+      <!-- Mobile Menu Button -->
+      <button class="md:hidden text-white">
+        <span class="material-symbols-outlined text-3xl">menu</span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+      <!-- Background Elements -->
+      <div class="absolute inset-0 z-0 flex items-center justify-center overflow-hidden">
+        <img src="img_b.png" id="hero-bg-img" alt="VR Burger"
+          class="absolute w-[80%] md:w-[60%] max-w-4xl object-contain opacity-80 mix-blend-normal scale-110"
+          style="will-change: transform;">
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px] animate-pulse-slow">
+        </div>
+        <div
+          class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] animate-pulse-slow"
+          style="animation-delay: 2s;"></div>
+      </div>
+
+      <div class="container mx-auto px-6 relative z-10 text-center">
+        <div class="overflow-hidden mb-4">
+          <h1 class="hero-title text-5xl md:text-8xl lg:text-9xl font-display font-black leading-[0.9] tracking-tight">
+            <div class="translate-y-full">LE FUTUR</div>
+            <div class="translate-y-full text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-300">DU
+              MENU</div>
+            <div class="translate-y-full">EST ARRIVÉ</div>
+          </h1>
+        </div>
+
+        <p class="hero-subtitle mt-8 text-lg md:text-xl text-gray-400 max-w-2xl mx-auto opacity-0 translate-y-10">
+          Transformez l'expérience de vos clients avec la réalité augmentée.
+          Visualisez, choisissez, savourez avant même de commander.
+        </p>
+
+        <div
+          class="hero-cta mt-12 flex flex-col md:flex-row gap-6 justify-center items-center opacity-0 translate-y-10">
+          <button data-magnetic data-scroll-to="#contact"
+            class="px-8 py-4 bg-primary text-white rounded-full font-bold text-lg hover:bg-orange-600 transition-colors shadow-lg shadow-primary/25">
+            Commencer l'expérience
+          </button>
+          <button data-magnetic
+            class="px-8 py-4 border border-white/20 rounded-full font-medium text-lg hover:bg-white/5 transition-colors backdrop-blur-sm">
+            Voir la vidéo
+          </button>
+        </div>
+      </div>
+
+      <!-- Floating Elements -->
+      <div class="absolute inset-0 pointer-events-none z-0">
+        <img
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSNXFggdJGdNgT9BjyY0ljEOigP3GYMS5S3WRfw8e06ocgUP2P3-b_VPv5hq2fyEyKLVgVYzlHLdcUG8ZGN8OTM6u0nBgiX0V6Nt7mEgu5iW1vO-DYZetJU1o_nIelmAdjkd-AU2xVoJcKEI3QPINQ-G5zgGKwM_EB4nNNOFQBWsb4u0X3KS-IG4pHqIdDR7oBkkC4Jq1S4GTlfEt7zLr0RgNGkm1cHXiaYYEU-Hn-eA3F3x_rJR-r_7Efm4YZ1CgUiKPLqLUW-h0"
+          class="floating-element absolute top-20 right-[10%] w-48 md:w-64 rounded-2xl shadow-2xl opacity-0 rotate-12"
+          data-speed="0.5" alt="AR Pizza">
+        <img
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7_f8wwnY3petLGVKEArEJaH7lRH3YdP30DYghEEYheQ0RyK8qZyghX_HDqnoGCDtilEqzwYFzIokbstGbCjNQ7xPh5OMbhr2PzEy-4BlFKUvYViG4Cj5pYGQXrRkqFzxeGDJ9HOZsvCNBqOks-qXnYRpDWLJ0qa35gW2HeCywKKzU3fMHhGVOYQEtBkZqKBzYj6c2xc_F50pegjPYquGLmtF6UTLcdC3ngbvf4LNS_FvzfqMXQWaF_1oJJIIgeqSJtYfiArCgDJU"
+          class="floating-element absolute bottom-20 left-[10%] w-40 md:w-56 rounded-2xl shadow-2xl opacity-0 -rotate-6"
+          data-speed="0.8" alt="Gourmet Dish">
+      </div>
+
+      <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+        <span class="material-symbols-outlined text-gray-500">keyboard_arrow_down</span>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-32 relative">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-20">
+          <h2 class="text-4xl md:text-6xl font-display font-bold max-w-xl reveal-text">
+            Une technologie <span class="text-primary">révolutionnaire</span> pour votre restaurant.
+          </h2>
+          <p class="text-gray-400 max-w-md mt-6 md:mt-0 reveal-text">
+            Plus qu'un simple menu numérique. Une véritable immersion culinaire qui augmente le panier moyen et fidélise
+            la clientèle.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Feature 1 -->
+          <div
+            class="feature-card group p-8 rounded-3xl bg-surface-light/50 border border-white/5 hover:border-primary/50 transition-all duration-500 hover:-translate-y-2">
+            <div
+              class="size-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-8 group-hover:scale-110 transition-transform duration-500">
+              <span class="material-symbols-outlined text-3xl">view_in_ar</span>
+            </div>
+            <h3 class="text-2xl font-display font-bold mb-4">Visualisation 3D</h3>
+            <p class="text-gray-400 leading-relaxed">
+              Permettez à vos clients de voir leurs plats sous tous les angles avant de commander. Une transparence
+              totale qui met en appétit.
+            </p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div
+            class="feature-card group p-8 rounded-3xl bg-surface-light/50 border border-white/5 hover:border-primary/50 transition-all duration-500 hover:-translate-y-2"
+            style="transition-delay: 100ms;">
+            <div
+              class="size-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-8 group-hover:scale-110 transition-transform duration-500">
+              <span class="material-symbols-outlined text-3xl">qr_code_scanner</span>
+            </div>
+            <h3 class="text-2xl font-display font-bold mb-4">Accès Instantané</h3>
+            <p class="text-gray-400 leading-relaxed">
+              Aucune application à télécharger. Un simple scan de QR code suffit pour lancer l'expérience en quelques
+              millisecondes.
+            </p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div
+            class="feature-card group p-8 rounded-3xl bg-surface-light/50 border border-white/5 hover:border-primary/50 transition-all duration-500 hover:-translate-y-2"
+            style="transition-delay: 200ms;">
+            <div
+              class="size-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-8 group-hover:scale-110 transition-transform duration-500">
+              <span class="material-symbols-outlined text-3xl">trending_up</span>
+            </div>
+            <h3 class="text-2xl font-display font-bold mb-4">Boost des Ventes</h3>
+            <p class="text-gray-400 leading-relaxed">
+              Les menus en réalité augmentée augmentent le ticket moyen de 25% en stimulant l'appétit visuel des
+              clients.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visual Demo / Parallax Section -->
+    <section id="demo" class="py-32 relative overflow-hidden">
+      <div class="absolute inset-0 bg-surface-light skew-y-3 scale-110 z-0"></div>
+
+      <div class="container mx-auto px-6 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-20">
+          <div class="lg:w-1/2">
+            <div class="relative group perspective-1000">
+              <div
+                class="absolute inset-0 bg-primary/20 blur-3xl rounded-full opacity-50 group-hover:opacity-100 transition-opacity duration-700">
+              </div>
+              <img
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmjwxsSMQsTcNHgOKkdC6uzQA-4TK6EfqkR2vhWLEdqHL1c9qGW_jWS8iLKj8tIubFO1RrcFtdthCz-7gfgxzuco9rwjcsmm_RYT2Iphn7zf6yqYfGEN6WgHmPNdXdSN7tM00V_ip8aSItGG7dATTvKiBE-TRJyM3XsjtiNXpv51RnAZNJ4tEvpDdKvbDpZuNiolrrNUaTqZYqNtk3q_2ULfzPOWmH31nlRI7yR9ACyJ87r_u6KAe88GHByvHBF7qQGd-NpoiQKJ4"
+                class="relative w-full rounded-2xl shadow-2xl transform transition-transform duration-700 group-hover:rotate-y-6 group-hover:rotate-x-6"
+                alt="App Demo">
+            </div>
+          </div>
+
+          <div class="lg:w-1/2">
+            <span class="text-primary font-bold tracking-widest uppercase mb-4 block reveal-text">Démonstration</span>
+            <h2 class="text-4xl md:text-5xl font-display font-bold mb-8 reveal-text">
+              L'immersion totale <br>au bout des doigts.
+            </h2>
+            <p class="text-gray-400 text-lg mb-8 reveal-text">
+              Offrez à vos clients la possibilité de projeter leurs envies directement sur leur table.
+              Une interface fluide, intuitive et incroyablement réaliste qui transforme l'hésitation en décision.
+            </p>
+
+            <ul class="space-y-4 mb-10">
+              <li class="flex items-center gap-4 reveal-text">
+                <span class="material-symbols-outlined text-primary">check_circle</span>
+                <span class="text-gray-300">Rendu photoréaliste haute définition</span>
+              </li>
+              <li class="flex items-center gap-4 reveal-text">
+                <span class="material-symbols-outlined text-primary">check_circle</span>
+                <span class="text-gray-300">Compatible iOS et Android sans installation</span>
+              </li>
+              <li class="flex items-center gap-4 reveal-text">
+                <span class="material-symbols-outlined text-primary">check_circle</span>
+                <span class="text-gray-300">Mise à jour du menu en temps réel</span>
+              </li>
+            </ul>
+
+            <button data-magnetic
+              class="px-8 py-4 bg-white text-black rounded-full font-bold hover:bg-gray-200 transition-colors reveal-text">
+              Voir la démo live
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-32 relative bg-surface-light/30">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-20">
+          <span class="text-primary font-bold tracking-widest uppercase mb-4 block reveal-text">Témoignages</span>
+          <h2 class="text-4xl md:text-5xl font-display font-bold mb-6 reveal-text">Ils nous font confiance</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Testimonial 1 -->
+          <div
+            class="testimonial-card p-8 rounded-3xl bg-surface border border-white/5 hover:border-primary/30 transition-all duration-300">
+            <div class="flex items-center gap-4 mb-6">
+              <img
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBP0-a0WTSSKPi5RC4fjvVqwZcTfiJwiv1Ei__Dy7cL8lBXA8XBGergZR-ovChkwRJQPyGyZ02lryyfu61e9SI0AiJ6uoCF-eE1ddGA4BFSv_7t5KJXN2BdQ9IzloD6ELT2U4EqTB-m9GyBu2_inUUstIa7Pt6Yfm0hAYnjru37sj6-UxwP9jVZ2WzareYWwfygi7s-qZfbs1eyN1-LwFrbe2aOLX_n36qCBYodqadbLSWGP7pUDPUZvsCtpwf1uhbYkUc8qR1Nqxg"
+                class="size-12 rounded-full object-cover border-2 border-primary/20" alt="Julien P.">
+              <div>
+                <h4 class="font-bold font-display">Julien P.</h4>
+                <p class="text-sm text-gray-500">Le Bistrot Parisien</p>
+              </div>
+            </div>
+            <p class="text-gray-400 italic">"Look-Eat a complètement changé la façon dont nos clients choisissent leurs
+              plats. Les ventes des plats mis en avant ont augmenté de 25% !"</p>
+            <div class="mt-6 flex text-primary">
+              <span class="material-symbols-outlined text-sm">star</span>
+              <span class="material-symbols-outlined text-sm">star</span>
+              <span class="material-symbols-outlined text-sm">star</span>
+              <span class="material-symbols-outlined text-sm">star</span>
+              <span class="material-symbols-outlined text-sm">star</span>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div
+            class="testimonial-card p-8 rounded-3xl bg-surface border border-white/5 hover:border-primary/30 transition-all duration-300">
+            <div class="flex items-center gap-4 mb-6">
+              <img
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8QoCatMPwKFIpl09qxqUQhc-1_YWiZWA2cRU2ChyaPa6jJNYuJ5u4E0J0Fgqz1GHzwJ0LRbuE6JAmPHQlCdNse4p3QYxUV1p90r0P-kaI0CBigYklnY2GxcimK-iPIGxs0OxeRP_CLfx63rhgH1eLR_-NAE28L2tmRrwAkkpz8hRNRbXxTT39CytjldNLWk62TUKadtpYdADhVVcmm5FmP7ZWbimoHrLyZFH-hdn8-F4-Ox_0bk18UOH-YQcbUu1zMg2MEFnWqro"
+                class="size-12 rounded-full object-cover border-2 border-primary/20" alt="Marie L.">
+              <div>
+                <h4 class="font-bold font-display">Marie L.</h4>
+                <p class="text-sm text-gray-500">La Villa Azura</p>
+              </div>
+            </div>
+            <p class="text-gray-400 italic">"Une solution innovante et facile à mettre en place. Nos clients adorent,
+              surtout les plus jeunes. C'est un vrai plus pour notre image de marque."</p>
+            <div class="mt-6 flex text-primary">
+              <span class="material-symbols-outlined text-sm">star</span>
+              <span class="material-symbols-outlined text-sm">star</span>
+              <span class="material-symbols-outlined text-sm">star</span>
+              <span class="material-symbols-outlined text-sm">star</span>
+              <span class="material-symbols-outlined text-sm">star</span>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div
+            class="testimonial-card p-8 rounded-3xl bg-surface border border-white/5 hover:border-primary/30 transition-all duration-300">
+            <div class="flex items-center gap-4 mb-6">
+              <img
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjoxZkRnV2CfL4oD7j7kSNuWoacBf6wNQUpUtBjW3pLUkkGCCGbmhjmIpVSNdH4GGfLjkAfwxez-a5Xtk6sAH87meQC9oKQ0cYGQlDbuxCuVACteU_y1dyVlE-x9nvlGJihNBpdH_6FTy3y_lGk7zBUeTU-8M5ethfPWzE8W6iB5rlbPV_qJ-N9sbfBViWnhhVqfcNw62vN6NeufAuZq2xv2G2ya2Qcw7c9lKtgbk2DUI1cdoguLuagg4-MKQJuMyzPW6WhzoQVWw"
+                class="size-12 rounded-full object-cover border-2 border-primary/20" alt="Antoine D.">
+              <div>
+                <h4 class="font-bold font-display">Antoine D.</h4>
+                <p class="text-sm text-gray-500">Chez Antoine</p>
+              </div>
+            </div>
+            <p class="text-gray-400 italic">"Le support est incroyablement réactif. L'équipe a modélisé nos plats
+              signature à la perfection. Le résultat est bluffant."</p>
+            <div class="mt-6 flex text-primary">
+              <span class="material-symbols-outlined text-sm">star</span>
+              <span class="material-symbols-outlined text-sm">star</span>
+              <span class="material-symbols-outlined text-sm">star</span>
+              <span class="material-symbols-outlined text-sm">star</span>
+              <span class="material-symbols-outlined text-sm">star</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-32">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-20">
+          <h2 class="text-4xl md:text-5xl font-display font-bold mb-6 reveal-text">Des offres adaptées</h2>
+          <p class="text-gray-400 max-w-xl mx-auto reveal-text">
+            Que vous soyez un food truck ou une chaîne étoilée, nous avons la solution pour digitaliser votre menu.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <!-- Starter -->
+          <div
+            class="pricing-card p-8 rounded-3xl border border-white/10 hover:border-white/30 transition-all duration-300 bg-surface">
+            <h3 class="text-xl font-display font-bold mb-2">Starter</h3>
+            <div class="text-4xl font-bold mb-6">49€<span class="text-sm text-gray-500 font-normal">/mois</span></div>
+            <p class="text-gray-400 text-sm mb-8">Pour les petits établissements qui veulent innover.</p>
+            <ul class="space-y-4 mb-8 text-sm text-gray-300">
+              <li class="flex gap-3"><span class="material-symbols-outlined text-primary text-lg">check</span> 20 plats
+                en 3D</li>
+              <li class="flex gap-3"><span class="material-symbols-outlined text-primary text-lg">check</span> QR Code
+                unique</li>
+              <li class="flex gap-3"><span class="material-symbols-outlined text-primary text-lg">check</span> Support
+                email</li>
+            </ul>
+            <button
+              class="w-full py-3 border border-white/20 rounded-xl hover:bg-white hover:text-black transition-colors font-medium">Choisir</button>
+          </div>
+
+          <!-- Pro (Featured) -->
+          <div
+            class="pricing-card p-8 rounded-3xl border border-primary/50 bg-surface-light relative transform md:-translate-y-4 shadow-2xl shadow-primary/10">
+            <div
+              class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary text-white px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase">
+              Populaire</div>
+            <h3 class="text-xl font-display font-bold mb-2 text-primary">Pro</h3>
+            <div class="text-4xl font-bold mb-6">99€<span class="text-sm text-gray-500 font-normal">/mois</span></div>
+            <p class="text-gray-400 text-sm mb-8">La solution complète pour les restaurants établis.</p>
+            <ul class="space-y-4 mb-8 text-sm text-gray-300">
+              <li class="flex gap-3"><span class="material-symbols-outlined text-primary text-lg">check</span> 50 plats
+                en 3D</li>
+              <li class="flex gap-3"><span class="material-symbols-outlined text-primary text-lg">check</span> Dashboard
+                analytique</li>
+              <li class="flex gap-3"><span class="material-symbols-outlined text-primary text-lg">check</span> Support
+                prioritaire</li>
+              <li class="flex gap-3"><span class="material-symbols-outlined text-primary text-lg">check</span>
+                Personnalisation UI</li>
+            </ul>
+            <button
+              class="w-full py-3 bg-primary text-white rounded-xl hover:bg-orange-600 transition-colors font-bold shadow-lg shadow-primary/25">Choisir</button>
+          </div>
+
+          <!-- Enterprise -->
+          <div
+            class="pricing-card p-8 rounded-3xl border border-white/10 hover:border-white/30 transition-all duration-300 bg-surface">
+            <h3 class="text-xl font-display font-bold mb-2">Enterprise</h3>
+            <div class="text-4xl font-bold mb-6">Sur devis</div>
+            <p class="text-gray-400 text-sm mb-8">Pour les chaînes et franchises.</p>
+            <ul class="space-y-4 mb-8 text-sm text-gray-300">
+              <li class="flex gap-3"><span class="material-symbols-outlined text-primary text-lg">check</span> Plats
+                illimités</li>
+              <li class="flex gap-3"><span class="material-symbols-outlined text-primary text-lg">check</span> API &
+                Intégration POS</li>
+              <li class="flex gap-3"><span class="material-symbols-outlined text-primary text-lg">check</span> Account
+                Manager</li>
+            </ul>
+            <button
+              class="w-full py-3 border border-white/20 rounded-xl hover:bg-white hover:text-black transition-colors font-medium">Contacter</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-32 relative overflow-hidden">
+      <div class="absolute inset-0 bg-primary/5 z-0"></div>
+      <div class="container mx-auto px-6 relative z-10">
+        <div class="max-w-4xl mx-auto bg-surface border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-5xl font-display font-bold mb-4">Réservez votre démo</h2>
+            <p class="text-gray-400">Remplissez ce formulaire et nous vous recontacterons dans les 24h.</p>
+          </div>
+
+          <form class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="space-y-2">
+                <label for="name" class="text-sm font-medium text-gray-300">Nom complet</label>
+                <input type="text" id="name"
+                  class="w-full px-4 py-3 bg-surface-light border border-white/10 rounded-xl focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                  placeholder="Jean Dupont">
+              </div>
+              <div class="space-y-2">
+                <label for="email" class="text-sm font-medium text-gray-300">Email professionnel</label>
+                <input type="email" id="email"
+                  class="w-full px-4 py-3 bg-surface-light border border-white/10 rounded-xl focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                  placeholder="jean@restaurant.com">
+              </div>
+            </div>
+
+            <div class="space-y-2">
+              <label for="restaurant" class="text-sm font-medium text-gray-300">Nom du restaurant</label>
+              <input type="text" id="restaurant"
+                class="w-full px-4 py-3 bg-surface-light border border-white/10 rounded-xl focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                placeholder="Le Gourmet">
+            </div>
+
+            <div class="space-y-2">
+              <label for="message" class="text-sm font-medium text-gray-300">Message</label>
+              <textarea id="message" rows="4"
+                class="w-full px-4 py-3 bg-surface-light border border-white/10 rounded-xl focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                placeholder="Je souhaite en savoir plus sur..."></textarea>
+            </div>
+
+            <button type="submit"
+              class="w-full py-4 bg-primary text-white rounded-xl font-bold text-lg hover:bg-orange-600 transition-colors shadow-lg shadow-primary/25">
+              Envoyer la demande
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-12 border-t border-white/10 bg-dark">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="text-2xl font-display font-bold">Look-Eat.</div>
+        <div class="flex gap-8 text-sm text-gray-400">
+          <a href="#" class="hover:text-white transition-colors">Mentions Légales</a>
+          <a href="#" class="hover:text-white transition-colors">Confidentialité</a>
+          <a href="#" class="hover:text-white transition-colors">Contact</a>
+        </div>
+        <div class="text-sm text-gray-600">
+          © 2025 Look-Eat Inc.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
