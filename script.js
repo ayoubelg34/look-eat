@@ -24,48 +24,17 @@ gsap.registerPlugin(ScrollTrigger);
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- Loader Animation ---
-    const loaderTimeline = gsap.timeline({
-        onComplete: () => {
-            // Ensure loader is gone
-            gsap.set('#loader', { display: 'none' });
-        }
-    });
+    // --- Hero Animation (Immediate) ---
+    const heroTimeline = gsap.timeline();
 
-    // Safety net: Hide loader after 5 seconds max if something breaks
-    setTimeout(() => {
-        const loader = document.getElementById('loader');
-        if (loader && loader.style.display !== 'none') {
-            loader.style.opacity = '0';
-            loader.style.pointerEvents = 'none';
-            setTimeout(() => loader.style.display = 'none', 500);
-        }
-    }, 5000);
-
-    loaderTimeline
-        .to('#loader-text', {
-            y: 0,
-            duration: 1.5,
-            ease: 'power4.out',
-            delay: 0.5
-        })
-        .to('#loader-text', {
-            y: '-100%',
-            duration: 1,
-            ease: 'power4.in',
-            delay: 0.5
-        })
-        .to('#loader', {
-            y: '-100%',
-            duration: 1,
-            ease: 'power4.inOut'
-        }, "-=0.5")
+    heroTimeline
         .from('.hero-title div', {
             y: '100%',
             duration: 1.5,
             stagger: 0.2,
-            ease: 'power4.out'
-        }, "-=0.5")
+            ease: 'power4.out',
+            delay: 0.2
+        })
         .to('.hero-subtitle', {
             opacity: 1,
             y: 0,
@@ -83,40 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
             duration: 1,
             stagger: 0.2,
             ease: 'power2.out'
-        }, "-=1")
-        .from('#hero-bg-img', {
-            opacity: 0,
-            scale: 0.8,
-            duration: 2,
-            ease: 'power2.out'
-        }, "-=2");
-
-    // --- Hero Background Parallax & Floating ---
-    const heroBg = document.querySelector('#hero-bg-img');
-
-    // Parallax
-    gsap.to(heroBg, {
-        scrollTrigger: {
-            trigger: 'body',
-            start: 'top top',
-            end: 'bottom top',
-            scrub: 1
-        },
-        y: 200,
-        scale: 1.2,
-        ease: 'none'
-    });
-
-    // Floating Animation (Yoyo)
-    gsap.to(heroBg, {
-        y: '-=50',
-        rotation: 10,
-        scale: 1.1,
-        duration: 3,
-        repeat: -1,
-        yoyo: true,
-        ease: 'sine.inOut'
-    });
+        }, "-=1");
 
     // --- Floating Elements Animation ---
     gsap.utils.toArray('.floating-element').forEach((element) => {
@@ -144,19 +80,40 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Text Reveal Animation ---
+    // --- Text Reveal Animation (Smoother) ---
     gsap.utils.toArray('.reveal-text').forEach((element) => {
-        gsap.from(element, {
-            scrollTrigger: {
-                trigger: element,
-                start: 'top 85%',
-                toggleActions: 'play none none reverse'
-            },
-            y: 50,
-            opacity: 0,
-            duration: 1,
-            ease: 'power3.out'
-        });
+        gsap.fromTo(element,
+            { y: 30, opacity: 0 },
+            {
+                scrollTrigger: {
+                    trigger: element,
+                    start: 'top 85%',
+                    toggleActions: 'play none none reverse'
+                },
+                y: 0,
+                opacity: 1,
+                duration: 0.8,
+                ease: 'power2.out'
+            }
+        );
+    });
+
+    // --- General Fade In Up ---
+    // You can add 'fade-in-up' class to any element to animate it
+    gsap.utils.toArray('.fade-in-up').forEach((element) => {
+        gsap.fromTo(element,
+            { y: 40, opacity: 0 },
+            {
+                scrollTrigger: {
+                    trigger: element,
+                    start: 'top 85%',
+                },
+                y: 0,
+                opacity: 1,
+                duration: 0.8,
+                ease: 'power2.out'
+            }
+        );
     });
 
     // --- Feature Cards Stagger ---

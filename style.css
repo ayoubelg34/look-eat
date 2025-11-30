@@ -1,6 +1,9 @@
 :root {
     --primary: #ff6a00;
-    --dark: #0a0a0a;
+    --dark: #ffffff;
+    /* Changed to white */
+    --text: #0a0a0a;
+    /* Added text color variable */
 }
 
 html.lenis {
@@ -80,8 +83,10 @@ html.lenis {
 
 /* Typography Enhancements */
 .hero-title {
-    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
-    color: white;
+    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.1);
+    /* Changed to dark stroke */
+    color: var(--text);
+    /* Changed to dark text */
 }
 
 /* Navigation Link Hover Effect */
