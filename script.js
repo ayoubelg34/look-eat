@@ -195,4 +195,29 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // --- Contact Form -> Mailto ---
+    const contactForm = document.querySelector('#contact form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = (document.getElementById('name')?.value || '').trim();
+            const email = (document.getElementById('email')?.value || '').trim();
+            const restaurant = (document.getElementById('restaurant')?.value || '').trim();
+            const message = (document.getElementById('message')?.value || '').trim();
+
+            const subject = `Demande de démo - ${restaurant || name || 'Look-Eat'}`;
+            const body = [
+                `Nom : ${name || 'Non renseigné'}`,
+                `Email : ${email || 'Non renseigné'}`,
+                `Restaurant : ${restaurant || 'Non renseigné'}`,
+                '',
+                'Message :',
+                message || 'Non renseigné'
+            ].join('\n');
+
+            const mailtoUrl = `mailto:boutelga2@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = mailtoUrl;
+        });
+    }
 });

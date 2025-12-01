@@ -1,8 +1,8 @@
 :root {
-    --primary: #ff6a00;
+    --primary: #ff7043;
     --dark: #ffffff;
     /* Changed to white */
-    --text: #0a0a0a;
+    --text: #1f1f1f;
     /* Added text color variable */
 }
 
