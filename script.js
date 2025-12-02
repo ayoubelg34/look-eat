@@ -298,28 +298,54 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     }
-    // --- Contact Form -> Mailto ---
-    const contactForm = document.querySelector('#contact form');
+    // --- Contact Form Submission with Web3Forms ---
+    const contactForm = document.querySelector('#contactForm');
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const name = (document.getElementById('name')?.value || '').trim();
-            const email = (document.getElementById('email')?.value || '').trim();
-            const restaurant = (document.getElementById('restaurant')?.value || '').trim();
-            const message = (document.getElementById('message')?.value || '').trim();
 
-            const subject = `Demande de démo - ${restaurant || name || 'Look-Eat'}`;
-            const body = [
-                `Nom : ${name || 'Non renseigné'}`,
-                `Email : ${email || 'Non renseigné'}`,
-                `Restaurant : ${restaurant || 'Non renseigné'}`,
-                '',
-                'Message :',
-                message || 'Non renseigné'
-            ].join('\n');
+            const submitBtn = document.getElementById('submitBtn');
+            const btnText = document.getElementById('btnText');
+            const btnLoader = document.getElementById('btnLoader');
+            const formMessage = document.getElementById('formMessage');
 
-            const mailtoUrl = `mailto:boutelga2@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-            window.location.href = mailtoUrl;
+            // Show loading state
+            submitBtn.disabled = true;
+            btnText.classList.add('hidden');
+            btnLoader.classList.remove('hidden');
+            formMessage.classList.add('hidden');
+
+            try {
+                const formData = new FormData(contactForm);
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.success) {
+                    // Success
+                    formMessage.textContent = '✓ Votre message a été envoyé avec succès ! Nous vous contacterons bientôt.';
+                    formMessage.className = 'p-4 rounded-xl text-center font-medium bg-green-100 text-green-800';
+                    formMessage.classList.remove('hidden');
+                    contactForm.reset();
+                } else {
+                    // Error from API
+                    throw new Error(data.message || 'Erreur lors de l\'envoi');
+                }
+            } catch (error) {
+                // Network or other error
+                formMessage.textContent = '✗ Une erreur est survenue. Veuillez réessayer.';
+                formMessage.className = 'p-4 rounded-xl text-center font-medium bg-red-100 text-red-800';
+                formMessage.classList.remove('hidden');
+                console.error('Form submission error:', error);
+            } finally {
+                // Reset button state
+                submitBtn.disabled = false;
+                btnText.classList.remove('hidden');
+                btnLoader.classList.add('hidden');
+            }
         });
     }
 });
