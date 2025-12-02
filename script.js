@@ -11,7 +11,11 @@ const lenis = new Lenis({
 });
 
 // Sync Lenis and ScrollTrigger
-lenis.on('scroll', ScrollTrigger.update);
+let lenisScrollY = 0;
+lenis.on('scroll', ({ scroll }) => {
+    lenisScrollY = scroll;
+    ScrollTrigger.update();
+});
 
 gsap.ticker.add((time) => {
     lenis.raf(time * 1000);
@@ -21,6 +25,19 @@ gsap.ticker.lagSmoothing(0);
 
 // Initialize GSAP ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
+ScrollTrigger.scrollerProxy(document.body, {
+    scrollTop(value) {
+        if (arguments.length) {
+            lenis.scrollTo(value, { immediate: true });
+        }
+        return lenisScrollY;
+    },
+    getBoundingClientRect() {
+        return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+    },
+});
+ScrollTrigger.addEventListener('refresh', () => lenis.update());
+ScrollTrigger.refresh();
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -155,6 +172,24 @@ document.addEventListener('DOMContentLoaded', () => {
         ease: 'power3.out'
     });
 
+    // --- Section Reveal (light fade/slide) ---
+    gsap.utils.toArray('main section').forEach((section, index) => {
+        if (index === 0) return; // skip hero
+        gsap.fromTo(section,
+            { opacity: 0, y: 50 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: section,
+                    start: 'top 80%',
+                    toggleActions: 'play none none reverse',
+                }
+            });
+    });
+
     // --- Magnetic Buttons ---
     const magneticButtons = document.querySelectorAll('[data-magnetic]');
 
@@ -196,6 +231,73 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // --- Reveal Animations (IntersectionObserver) ---
+    const revealItems = document.querySelectorAll('.reveal');
+    if (revealItems.length) {
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const delay = parseInt(el.dataset.delay || '0', 10);
+                    if (delay) {
+                        el.style.transitionDelay = `${delay}ms`;
+                    }
+                    el.classList.add('active');
+                    obs.unobserve(el);
+                }
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: '0px 0px -10% 0px'
+        });
+
+        revealItems.forEach((el) => observer.observe(el));
+    }
+
+    // --- Results Number Counter ---
+    const resultNumbers = document.querySelectorAll('.result-number');
+    if (resultNumbers.length) {
+        const formatValue = (value, decimals = 0) =>
+            value.toFixed(decimals).replace('.', ',');
+
+        let countersPlayed = false;
+        const playCounters = () => {
+            if (countersPlayed) return;
+            countersPlayed = true;
+            resultNumbers.forEach((el) => {
+                const target = parseFloat(el.dataset.target || '0');
+                const prefix = el.dataset.prefix || '';
+                const suffix = el.dataset.suffix || '';
+                const decimals = parseInt(el.dataset.decimals || '0', 10);
+                const counter = { value: 0 };
+
+                gsap.to(counter, {
+                    value: target,
+                    duration: 1.8,
+                    ease: 'power1.out',
+                    onUpdate: () => {
+                        el.textContent = `${prefix}${formatValue(counter.value, decimals)}${suffix}`;
+                    }
+                });
+            });
+        };
+
+        ScrollTrigger.create({
+            trigger: '#results',
+            start: 'top 80%',
+            once: true,
+            onEnter: playCounters,
+        });
+
+        // Fallback if already visible on load
+        const resultsSection = document.querySelector('#results');
+        if (resultsSection) {
+            const rect = resultsSection.getBoundingClientRect();
+            if (rect.top < window.innerHeight) {
+                playCounters();
+            }
+        }
+    }
     // --- Contact Form -> Mailto ---
     const contactForm = document.querySelector('#contact form');
     if (contactForm) {
