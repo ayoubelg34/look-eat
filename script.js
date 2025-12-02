@@ -249,6 +249,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // --- Mobile Menu Toggle ---
+    const mobileMenuBtn = document.getElementById('mobileMenuButton');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('block');
+        });
+
+        mobileMenu.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('block');
+            });
+        });
+    }
+
     // --- Reveal Animations (IntersectionObserver) ---
     const revealItems = document.querySelectorAll('.reveal');
     if (revealItems.length) {
