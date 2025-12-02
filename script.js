@@ -45,31 +45,49 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroTimeline = gsap.timeline();
 
     heroTimeline
-        .from('.hero-title div', {
-            y: '100%',
-            duration: 1.5,
-            stagger: 0.2,
-            ease: 'power4.out',
-            delay: 0.2
+        .from('.hero-badge', {
+            opacity: 0,
+            y: -10,
+            duration: 0.8,
+            ease: 'power2.out',
+            delay: 0.1
         })
-        .to('.hero-subtitle', {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: 'power3.out'
-        }, "-=1")
-        .to('.hero-cta', {
-            opacity: 1,
-            y: 0,
-            duration: 1,
+        .from('.hero-title-line', {
+            y: '110%',
+            duration: 1.2,
+            stagger: 0.15,
+            ease: 'power4.out'
+        }, "-=0.4")
+        .from('.hero-subtitle', {
+            opacity: 0,
+            y: 16,
+            duration: 0.9,
             ease: 'power3.out'
         }, "-=0.8")
+        .from('.hero-cta', {
+            opacity: 0,
+            y: 16,
+            duration: 0.9,
+            ease: 'power3.out'
+        }, "-=0.7")
+        .from('.hero-video-card', {
+            opacity: 0,
+            y: 30,
+            duration: 1,
+            ease: 'power3.out'
+        }, "-=0.6")
+        .from('.hero-video-card .hero-video-badge', {
+            opacity: 0,
+            y: 14,
+            duration: 0.6,
+            ease: 'power2.out'
+        }, "-=0.6")
         .to('.floating-element', {
             opacity: 1,
             duration: 1,
             stagger: 0.2,
             ease: 'power2.out'
-        }, "-=1");
+        }, "-=0.7");
 
     // --- Floating Elements Animation ---
     gsap.utils.toArray('.floating-element').forEach((element) => {

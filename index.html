@@ -66,8 +66,8 @@
       <div class="hidden md:flex gap-8 lg:gap-12 items-center">
         <a href="#demo" class="nav-link text-sm uppercase tracking-widest hover:text-primary transition-colors">Nos
           solutions</a>
-        <a href="#features"
-          class="nav-link text-sm uppercase tracking-widest hover:text-primary transition-colors">A propos</a>
+        <a href="#features" class="nav-link text-sm uppercase tracking-widest hover:text-primary transition-colors">A
+          propos</a>
         <a href="#pricing"
           class="nav-link text-sm uppercase tracking-widest hover:text-primary transition-colors">Tarifs</a>
         <a href="#testimonials"
@@ -90,7 +90,7 @@
 
   <main>
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+    <section class="relative min-h-[95vh] flex items-start justify-center pt-40 pb-24 overflow-hidden">
       <!-- Background Elements -->
       <div class="absolute inset-0 z-0 flex items-center justify-center overflow-hidden">
         <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px] animate-pulse-slow">
@@ -101,20 +101,57 @@
       </div>
 
       <div class="container mx-auto px-6 relative z-10 text-center">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight tracking-tight text-text mb-6">
-          Le premier menu en Réalité Augmentée<br>pour votre restaurant
+        <div class="hero-badge inline-flex justify-center w-full mb-4 float-soft">
+          <div
+            class="inline-flex items-center rounded-full p-[2px] bg-gradient-to-r from-[#FF3B30] to-[#FF6A00] shadow-[0_2px_6px_rgba(0,0,0,0.06)]">
+            <div class="flex items-center gap-3 rounded-full bg-[#FDFDFD] px-4 py-2">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <defs>
+                  <linearGradient id="heroBadgeGradient" x1="0" y1="0" x2="1" y2="1">
+                    <stop stop-color="#FF3B30" />
+                    <stop offset="1" stop-color="#FF6A00" />
+                  </linearGradient>
+                </defs>
+                <rect x="4" y="5" width="16" height="6" rx="1.5" stroke="url(#heroBadgeGradient)" stroke-width="1.6" />
+                <rect x="4" y="13" width="16" height="6" rx="1.5" stroke="url(#heroBadgeGradient)" stroke-width="1.6" />
+                <path d="M8 8h8M8 16h8" stroke="url(#heroBadgeGradient)" stroke-width="1.6" stroke-linecap="round" />
+              </svg>
+              <span class="text-sm font-medium text-gray-800">Révolution digitale complète pour restaurants</span>
+            </div>
+          </div>
+        </div>
+
+        <h1
+          class="hero-title text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight tracking-tight text-text mb-6 space-y-1">
+          <span class="block hero-title-line">Le premier <span class="text-primary">Menu en Réalité Augmentée</span></span>
+          <span class="block hero-title-line">pour votre restaurant</span>
         </h1>
 
-        <p class="text-base md:text-lg text-gray-600 max-w-3xl mx-auto mb-8">
+        <p class="hero-subtitle text-base md:text-lg text-gray-600 max-w-3xl mx-auto mb-8">
           Avec Look Eat, modernisez votre restaurant, séduisez vos clients et améliorez vos performances au quotidien.
           Aucune application à télécharger.
         </p>
 
-        <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
+        <div class="hero-cta flex flex-col md:flex-row gap-6 justify-center items-center">
           <a href="#demo" data-magnetic data-scroll-to="#demo"
             class="px-8 py-4 bg-primary text-white rounded-full font-bold text-lg hover:bg-orange-600 transition-colors shadow-lg shadow-primary/25">
             Essayer maintenant
           </a>
+        </div>
+
+        <div class="hero-video-card mt-10 max-w-5xl mx-auto">
+          <div
+            class="rounded-[28px] overflow-hidden border-4 border-white/80 ring-4 ring-orange-300/60 shadow-[0_25px_80px_-35px_rgba(0,0,0,0.55)] bg-gradient-to-b from-black via-gray-950 to-black">
+            <video src="tf1.mp4" controls loop playsinline
+              class="w-full h-[240px] md:h-[420px] object-contain bg-black"></video>
+          </div>
+          <div class="hero-video-badge flex justify-center mt-4">
+            <div
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/95 backdrop-blur-md border border-white/80 ring-1 ring-orange-200/80 shadow shadow-orange-200/50">
+              <img src="image_vu_tf1.png?v=3" alt="Vu sur TF1" class="h-8 md:h-9 w-auto drop-shadow">
+              <span class="text-[0.65rem] md:text-xs font-bold uppercase tracking-[0.2em] text-primary">Vu à la TV</span>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -132,26 +169,6 @@
 
       <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
         <span class="material-symbols-outlined text-gray-500">keyboard_arrow_down</span>
-      </div>
-    </section>
-
-    <!-- Press Feature -->
-    <section id="press" class="relative bg-surface min-h-screen flex items-center justify-center py-16 md:py-20">
-      <div class="container mx-auto px-6 w-full">
-        <div class="max-w-6xl mx-auto space-y-8">
-          <div class="flex justify-center">
-            <div
-              class="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/95 backdrop-blur-md border border-white/80 ring-2 ring-orange-200/80 shadow-lg shadow-orange-200/70 float-soft">
-              <img src="image_vu_tf1.png?v=3" alt="Vu sur TF1" class="h-12 md:h-14 w-auto drop-shadow">
-              <span class="text-xs md:text-sm font-bold uppercase tracking-[0.18em] text-primary">Vu à la TV</span>
-            </div>
-          </div>
-          <div
-            class="rounded-[36px] overflow-hidden border-4 border-white/80 ring-4 ring-orange-300/60 shadow-[0_35px_90px_-30px_rgba(0,0,0,0.55)] bg-gradient-to-b from-black via-gray-950 to-black">
-            <video src="tf1.mp4" controls loop playsinline
-              class="w-full h-[48vh] md:h-[56vh] object-contain bg-black"></video>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -209,6 +226,42 @@
               </li>
             </ul>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="results" class="py-28 relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-b from-[#fff3e6] via-white to-[#fff9f3] pointer-events-none -z-10">
+      </div>
+      <div class="container mx-auto px-6 max-w-6xl">
+        <div class="text-center mb-14">
+          <h2 class="text-4xl md:text-5xl font-display font-bold text-text">Des résultats dont nous sommes fiers</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div
+            class="text-center bg-white rounded-[28px] p-8 md:p-10 shadow-[0_20px_60px_rgba(255,90,0,0.15)] ring-2 ring-orange-200/50">
+            <div class="text-5xl md:text-6xl font-black text-[#FF5A00] mb-3">+30%</div>
+            <div class="text-gray-500 text-sm md:text-base">de ventes additionnelles</div>
+          </div>
+          <div
+            class="text-center bg-white rounded-[28px] p-8 md:p-10 shadow-[0_20px_60px_rgba(255,90,0,0.15)] ring-2 ring-orange-200/50">
+            <div class="text-5xl md:text-6xl font-black text-[#FF5A00] mb-3">-70%</div>
+            <div class="text-gray-500 text-sm md:text-base">De retour en cuisine</div>
+          </div>
+          <div
+            class="text-center bg-white rounded-[28px] p-8 md:p-10 shadow-[0_20px_60px_rgba(255,90,0,0.15)] ring-2 ring-orange-200/50">
+            <div class="text-5xl md:text-6xl font-black text-[#FF5A00] mb-3">9,5/10</div>
+            <div class="text-gray-500 text-sm md:text-base">de satisfaction client</div>
+          </div>
+        </div>
+
+        <div class="flex justify-center mt-10">
+          <span
+            class="inline-flex items-center px-5 py-2 rounded-full border border-[#FF5A00] text-[#FF5A00] text-sm font-semibold tracking-wide bg-transparent">
+            Estimations moyennes observées chez nos clients
+          </span>
         </div>
       </div>
     </section>
@@ -374,42 +427,6 @@
               </li>
             </ul>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Results Section -->
-    <section id="results" class="py-28 relative overflow-hidden">
-      <div class="absolute inset-0 bg-gradient-to-b from-[#fff3e6] via-white to-[#fff9f3] pointer-events-none -z-10">
-      </div>
-      <div class="container mx-auto px-6 max-w-6xl">
-        <div class="text-center mb-14">
-          <h2 class="text-4xl md:text-5xl font-display font-bold text-text">Des résultats dont nous sommes fiers</h2>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div
-            class="text-center bg-white rounded-[28px] p-8 md:p-10 shadow-[0_20px_60px_rgba(255,90,0,0.15)] ring-2 ring-orange-200/50">
-            <div class="text-5xl md:text-6xl font-black text-[#FF5A00] mb-3">+30%</div>
-            <div class="text-gray-500 text-sm md:text-base">de ventes additionnelles</div>
-          </div>
-          <div
-            class="text-center bg-white rounded-[28px] p-8 md:p-10 shadow-[0_20px_60px_rgba(255,90,0,0.15)] ring-2 ring-orange-200/50">
-            <div class="text-5xl md:text-6xl font-black text-[#FF5A00] mb-3">-70%</div>
-            <div class="text-gray-500 text-sm md:text-base">De retour en cuisine avec le prépaiement</div>
-          </div>
-          <div
-            class="text-center bg-white rounded-[28px] p-8 md:p-10 shadow-[0_20px_60px_rgba(255,90,0,0.15)] ring-2 ring-orange-200/50">
-            <div class="text-5xl md:text-6xl font-black text-[#FF5A00] mb-3">9,5/10</div>
-            <div class="text-gray-500 text-sm md:text-base">de satisfaction client</div>
-          </div>
-        </div>
-
-        <div class="flex justify-center mt-10">
-          <span
-            class="inline-flex items-center px-5 py-2 rounded-full border border-[#FF5A00] text-[#FF5A00] text-sm font-semibold tracking-wide bg-transparent">
-            Estimations moyennes observées chez nos clients
-          </span>
         </div>
       </div>
     </section>
