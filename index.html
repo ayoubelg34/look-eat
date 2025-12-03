@@ -75,7 +75,7 @@
       </div>
 
       <a href="#contact" data-magnetic data-scroll-to="#contact"
-        class="hidden md:flex items-center gap-2 px-6 py-2 border border-gray-200 rounded-full hover:bg-black hover:text-white transition-all duration-300 group">
+        class="hidden md:flex items-center gap-2 px-6 py-2 bg-gradient-to-r from-primary to-orange-500 text-white rounded-full shadow-md shadow-primary/25 hover:from-orange-500 hover:to-orange-600 transition-all duration-300 group">
         <span class="text-sm font-medium">Réserver une démo</span>
         <span
           class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
@@ -143,15 +143,13 @@
         <div class="hero-video-card mt-10 max-w-5xl mx-auto">
           <div
             class="rounded-[28px] overflow-hidden border-4 border-white/80 ring-4 ring-orange-300/60 shadow-[0_25px_80px_-35px_rgba(0,0,0,0.55)] bg-gradient-to-b from-black via-gray-950 to-black">
-            <video src="tf1.mp4" controls loop playsinline
+            <video src="tf1.mp4" controls loop playsinline poster="screen.png" preload="metadata"
               class="w-full h-[240px] md:h-[420px] object-contain bg-black"></video>
           </div>
           <div class="hero-video-badge flex justify-center mt-4">
             <div
               class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/95 backdrop-blur-md border border-white/80 ring-1 ring-orange-200/80 shadow shadow-orange-200/50">
-              <img src="image_vu_tf1.png?v=3" alt="Vu sur TF1" class="h-8 md:h-9 w-auto drop-shadow">
-              <span class="text-[0.65rem] md:text-xs font-bold uppercase tracking-[0.2em] text-primary">Vu à la
-                TV</span>
+              <img src="image_vu_tf1.png?v=3" alt="Vu sur TF1" class="h-6 md:h-7 w-auto drop-shadow">
             </div>
           </div>
         </div>
@@ -337,6 +335,7 @@
       <div class="container mx-auto px-6 relative z-10">
         <div class="text-center max-w-3xl mx-auto mb-20">
           <span class="text-primary font-bold tracking-widest uppercase mb-4 block reveal-text">Processus</span>
+          <h2 class="text-4xl md:text-5xl font-display font-bold mb-6 reveal-text">Comment ça marche</h2>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
@@ -415,26 +414,33 @@
     <!-- Reservations Section -->
     <section class="py-28 bg-surface relative overflow-hidden">
       <div class="container mx-auto px-6">
-        <div class="max-w-4xl mx-auto text-center space-y-6">
-          <span class="text-primary font-bold tracking-widest uppercase mb-2 block reveal-text">Réservations</span>
-          <h2 class="text-4xl md:text-5xl font-display font-bold text-text reveal-text">Avec <span
-              class="text-primary">Réserv'Look-Eat</span>, gérer vos réservations devient un jeu d'enfant.</h2>
-          <p class="text-gray-600 text-lg reveal-text">
-            Gérez vos réservations en toute autonomie grâce à un dashboard complet et intuitif.
-          </p>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-            <div
-              class="p-6 rounded-2xl bg-white border border-orange-100 ring-2 ring-orange-50 shadow-[0_10px_30px_rgba(255,90,0,0.08)] reveal-text">
-              <p class="text-gray-700">Adaptez vos horaires, contrôlez vos créneaux et suivez toutes vos réservations
-                en
-                temps réel.</p>
+        <div class="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12">
+          <div class="lg:w-1/2 space-y-6 text-left">
+            <span class="text-primary font-bold tracking-widest uppercase mb-2 block reveal-text">Réservations</span>
+            <h2 class="text-4xl md:text-5xl font-display font-bold text-text reveal-text">Avec <span
+                class="text-primary">Réserv'Look-Eat</span>, gérer vos réservations devient un jeu d'enfant.</h2>
+            <p class="text-gray-600 text-lg reveal-text">
+              Gérez vos réservations en toute autonomie grâce à un dashboard complet et intuitif.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+              <div
+                class="p-6 rounded-2xl bg-white border border-orange-100 ring-2 ring-orange-50 shadow-[0_10px_30px_rgba(255,90,0,0.08)] reveal-text">
+                <p class="text-gray-700">Adaptez vos horaires, contrôlez vos créneaux et suivez toutes vos réservations
+                  en
+                  temps réel.</p>
+              </div>
+              <div
+                class="p-6 rounded-2xl bg-white border border-orange-100 ring-2 ring-orange-50 shadow-[0_10px_30px_rgba(255,90,0,0.08)] reveal-text"
+                style="transition-delay: 100ms;">
+                <p class="text-gray-700">Moins de no-shows grâce aux prépaiements, et une base clients automatique pour
+                  fidéliser vos visiteurs.</p>
+              </div>
             </div>
-            <div
-              class="p-6 rounded-2xl bg-white border border-orange-100 ring-2 ring-orange-50 shadow-[0_10px_30px_rgba(255,90,0,0.08)] reveal-text"
-              style="transition-delay: 100ms;">
-              <p class="text-gray-700">Moins de no-shows grâce aux prépaiements, et une base clients automatique pour
-                fidéliser vos visiteurs.</p>
-            </div>
+          </div>
+
+          <div class="lg:w-1/2 w-full">
+            <img src="reserv.png" alt="Réservation Look-Eat sur mobile"
+              class="w-full max-w-xl mx-auto lg:mx-0 lg:ml-auto rounded-3xl shadow-2xl object-contain">
           </div>
         </div>
       </div>
@@ -457,9 +463,6 @@
             <div
               class="testimonial-card w-[350px] md:w-[400px] flex-shrink-0 p-8 rounded-3xl bg-white border border-gray-100 hover:border-primary/30 transition-all duration-300 shadow-lg shadow-gray-100">
               <div class="flex items-center gap-4 mb-6">
-                <img
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBP0-a0WTSSKPi5RC4fjvVqwZcTfiJwiv1Ei__Dy7cL8lBXA8XBGergZR-ovChkwRJQPyGyZ02lryyfu61e9SI0AiJ6uoCF-eE1ddGA4BFSv_7t5KJXN2BdQ9IzloD6ELT2U4EqTB-m9GyBu2_inUUstIa7Pt6Yfm0hAYnjru37sj6-UxwP9jVZ2WzareYWwfygi7s-qZfbs1eyN1-LwFrbe2aOLX_n36qCBYodqadbLSWGP7pUDPUZvsCtpwf1uhbYkUc8qR1Nqxg"
-                  class="size-12 rounded-full object-cover border-2 border-primary/20" alt="Julien P.">
                 <div>
                   <h4 class="font-bold font-display">Julien P.</h4>
                   <p class="text-sm text-gray-500">Le Bistrot Parisien</p>
@@ -481,9 +484,6 @@
             <div
               class="testimonial-card w-[350px] md:w-[400px] flex-shrink-0 p-8 rounded-3xl bg-white border border-gray-100 hover:border-primary/30 transition-all duration-300 shadow-lg shadow-gray-100">
               <div class="flex items-center gap-4 mb-6">
-                <img
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8QoCatMPwKFIpl09qxqUQhc-1_YWiZWA2cRU2ChyaPa6jJNYuJ5u4E0J0Fgqz1GHzwJ0LRbuE6JAmPHQlCdNse4p3QYxUV1p90r0P-kaI0CBigYklnY2GxcimK-iPIGxs0OxeRP_CLfx63rhgH1eLR_-NAE28L2tmRrwAkkpz8hRNRbXxTT39CytjldNLWk62TUKadtpYdADhVVcmm5FmP7ZWbimoHrLyZFH-hdn8-F4-Ox_0bk18UOH-YQcbUu1zMg2MEFnWqro"
-                  class="size-12 rounded-full object-cover border-2 border-primary/20" alt="Marie L.">
                 <div>
                   <h4 class="font-bold font-display">Marie L.</h4>
                   <p class="text-sm text-gray-500">La Villa Azura</p>
@@ -504,9 +504,6 @@
             <div
               class="testimonial-card w-[350px] md:w-[400px] flex-shrink-0 p-8 rounded-3xl bg-white border border-gray-100 hover:border-primary/30 transition-all duration-300 shadow-lg shadow-gray-100">
               <div class="flex items-center gap-4 mb-6">
-                <img
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjoxZkRnV2CfL4oD7j7kSNuWoacBf6wNQUpUtBjW3pLUkkGCCGbmhjmIpVSNdH4GGfLjkAfwxez-a5Xtk6sAH87meQC9oKQ0cYGQlDbuxCuVACteU_y1dyVlE-x9nvlGJihNBpdH_6FTy3y_lGk7zBUeTU-8M5ethfPWzE8W6iB5rlbPV_qJ-N9sbfBViWnhhVqfcNw62vN6NeufAuZq2xv2G2ya2Qcw7c9lKtgbk2DUI1cdoguLuagg4-MKQJuMyzPW6WhzoQVWw"
-                  class="size-12 rounded-full object-cover border-2 border-primary/20" alt="Antoine D.">
                 <div>
                   <h4 class="font-bold font-display">Antoine D.</h4>
                   <p class="text-sm text-gray-500">Chez Antoine</p>
@@ -528,9 +525,6 @@
             <div
               class="testimonial-card w-[350px] md:w-[400px] flex-shrink-0 p-8 rounded-3xl bg-white border border-gray-100 hover:border-primary/30 transition-all duration-300 shadow-lg shadow-gray-100">
               <div class="flex items-center gap-4 mb-6">
-                <img
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBP0-a0WTSSKPi5RC4fjvVqwZcTfiJwiv1Ei__Dy7cL8lBXA8XBGergZR-ovChkwRJQPyGyZ02lryyfu61e9SI0AiJ6uoCF-eE1ddGA4BFSv_7t5KJXN2BdQ9IzloD6ELT2U4EqTB-m9GyBu2_inUUstIa7Pt6Yfm0hAYnjru37sj6-UxwP9jVZ2WzareYWwfygi7s-qZfbs1eyN1-LwFrbe2aOLX_n36qCBYodqadbLSWGP7pUDPUZvsCtpwf1uhbYkUc8qR1Nqxg"
-                  class="size-12 rounded-full object-cover border-2 border-primary/20" alt="Julien P.">
                 <div>
                   <h4 class="font-bold font-display">Julien P.</h4>
                   <p class="text-sm text-gray-500">Le Bistrot Parisien</p>
@@ -552,9 +546,6 @@
             <div
               class="testimonial-card w-[350px] md:w-[400px] flex-shrink-0 p-8 rounded-3xl bg-white border border-gray-100 hover:border-primary/30 transition-all duration-300 shadow-lg shadow-gray-100">
               <div class="flex items-center gap-4 mb-6">
-                <img
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8QoCatMPwKFIpl09qxqUQhc-1_YWiZWA2cRU2ChyaPa6jJNYuJ5u4E0J0Fgqz1GHzwJ0LRbuE6JAmPHQlCdNse4p3QYxUV1p90r0P-kaI0CBigYklnY2GxcimK-iPIGxs0OxeRP_CLfx63rhgH1eLR_-NAE28L2tmRrwAkkpz8hRNRbXxTT39CytjldNLWk62TUKadtpYdADhVVcmm5FmP7ZWbimoHrLyZFH-hdn8-F4-Ox_0bk18UOH-YQcbUu1zMg2MEFnWqro"
-                  class="size-12 rounded-full object-cover border-2 border-primary/20" alt="Marie L.">
                 <div>
                   <h4 class="font-bold font-display">Marie L.</h4>
                   <p class="text-sm text-gray-500">La Villa Azura</p>
@@ -575,9 +566,6 @@
             <div
               class="testimonial-card w-[350px] md:w-[400px] flex-shrink-0 p-8 rounded-3xl bg-white border border-gray-100 hover:border-primary/30 transition-all duration-300 shadow-lg shadow-gray-100">
               <div class="flex items-center gap-4 mb-6">
-                <img
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjoxZkRnV2CfL4oD7j7kSNuWoacBf6wNQUpUtBjW3pLUkkGCCGbmhjmIpVSNdH4GGfLjkAfwxez-a5Xtk6sAH87meQC9oKQ0cYGQlDbuxCuVACteU_y1dyVlE-x9nvlGJihNBpdH_6FTy3y_lGk7zBUeTU-8M5ethfPWzE8W6iB5rlbPV_qJ-N9sbfBViWnhhVqfcNw62vN6NeufAuZq2xv2G2ya2Qcw7c9lKtgbk2DUI1cdoguLuagg4-MKQJuMyzPW6WhzoQVWw"
-                  class="size-12 rounded-full object-cover border-2 border-primary/20" alt="Antoine D.">
                 <div>
                   <h4 class="font-bold font-display">Antoine D.</h4>
                   <p class="text-sm text-gray-500">Chez Antoine</p>
@@ -622,7 +610,7 @@
             <div class="space-y-4 mb-8 flex-grow text-sm text-gray-700">
               <div class="flex gap-3 items-start">
                 <span class="material-symbols-outlined text-primary text-lg mt-0.5">check_circle</span>
-                <span>Scan & modélisation de 15 plats en 3D</span>
+                <span>Scan & modélisation de 10 plats en 3D</span>
               </div>
               <div class="flex gap-3 items-start">
                 <span class="material-symbols-outlined text-primary text-lg mt-0.5">check_circle</span>
@@ -646,7 +634,7 @@
               </div>
               <div class="flex gap-3 items-start">
                 <span class="material-symbols-outlined text-primary text-lg mt-0.5">check_circle</span>
-                <span>Mise à disposition de l'outil de réservation Look-Eat</span>
+                <span class="line-through text-gray-400">Mise à disposition de l'outil de réservation Look-Eat</span>
               </div>
               <div class="flex gap-3 items-start">
                 <span class="material-symbols-outlined text-primary text-lg mt-0.5">check_circle</span>
@@ -673,7 +661,7 @@
             <div class="space-y-4 mb-8 flex-grow text-sm text-gray-700">
               <div class="flex gap-3 items-start">
                 <span class="material-symbols-outlined text-primary text-lg mt-0.5">check_circle</span>
-                <span>Scan & modélisation de 15 plats en 3D</span>
+                <span>Scan & modélisation de 20 plats en 3D</span>
               </div>
               <div class="flex gap-3 items-start">
                 <span class="material-symbols-outlined text-primary text-lg mt-0.5">check_circle</span>
@@ -686,13 +674,23 @@
               </div>
               <div class="flex gap-3 items-start">
                 <span class="material-symbols-outlined text-primary text-lg mt-0.5">check_circle</span>
-                <span>Gestion et maintenance de l’espace en ligne sécurisé (login / mot de passe)<br><span
-                    class="pl-0.5 block text-gray-500">• Réponses automatiques envoyées aux clients par
-                    e-mail</span></span>
+                <span>Mise à disposition de l'outil de réservation Look-Eat</span>
               </div>
               <div class="flex gap-3 items-start">
                 <span class="material-symbols-outlined text-primary text-lg mt-0.5">check_circle</span>
                 <span>Suivi & gestion des réservations en cours</span>
+              </div>
+              <div class="flex gap-3 items-start">
+                <span class="material-symbols-outlined text-primary text-lg mt-0.5">check_circle</span>
+                <span>3 mises à jour incluses par mois</span>
+              </div>
+              <div class="flex gap-3 items-start">
+                <span class="material-symbols-outlined text-primary text-lg mt-0.5">check_circle</span>
+                <span>Analyse en temps réel</span>
+              </div>
+              <div class="flex gap-3 items-start">
+                <span class="material-symbols-outlined text-primary text-lg mt-0.5">check_circle</span>
+                <span>Shooting photo</span>
               </div>
               <div class="flex gap-3 items-start">
                 <span class="material-symbols-outlined text-primary text-lg mt-0.5">check_circle</span>
@@ -705,10 +703,6 @@
               <div class="flex gap-3 items-start">
                 <span class="material-symbols-outlined text-primary text-lg mt-0.5">check_circle</span>
                 <span>Nom de domaine personnalisé</span>
-              </div>
-              <div class="flex gap-3 items-start">
-                <span class="material-symbols-outlined text-primary text-lg mt-0.5">check_circle</span>
-                <span>Fonctionnalités personnalisées (si nécessaire)</span>
               </div>
             </div>
 
@@ -850,7 +844,7 @@
   </footer>
 
   <!-- WhatsApp Floating Button -->
-  <a href="https://wa.me/1234567890" target="_blank"
+  <a href="https://wa.me/+33756872771" target="_blank"
     class="fixed bottom-6 left-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:scale-110 transition-transform duration-300 flex items-center justify-center group">
     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="fill-current">
       <path
