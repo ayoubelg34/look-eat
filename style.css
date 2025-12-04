@@ -6,12 +6,13 @@
     /* Added text color variable */
 }
 
-html.lenis {
+html.lenis,
+html.lenis body {
     height: auto;
 }
 
 .lenis.lenis-smooth {
-    scroll-behavior: auto;
+    scroll-behavior: auto !important;
 }
 
 .lenis.lenis-smooth [data-lenis-prevent] {
@@ -187,6 +188,7 @@ html.lenis {
 
 /* Responsive Tweaks */
 @media (max-width: 768px) {
+
     html,
     body {
         overflow-x: hidden;
@@ -199,7 +201,7 @@ html.lenis {
         transform: translateX(-50%);
     }
 
-    nav.fixed > div {
+    nav.fixed>div {
         padding: 12px 16px;
     }
 
@@ -266,7 +268,7 @@ html.lenis {
 }
 
 @media (max-width: 480px) {
-    nav.fixed > div {
+    nav.fixed>div {
         padding: 10px 12px;
     }
 
